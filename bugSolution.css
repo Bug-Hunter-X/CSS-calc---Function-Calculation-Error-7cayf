@@ -1,0 +1,17 @@
+The issue was caused by an incorrect use of units within the `calc()` function. I was mixing percentages and pixels without proper consideration for operator precedence. 
+
+**Incorrect Code (bug.css):**
+```css
+#myElement {
+  width: calc(50% - 10px);
+}
+```
+This will not subtract 10 pixels from 50% of the viewport width correctly.
+
+**Correct Code (bugSolution.css):**
+```css
+#myElement {
+  width: calc(50% - 10px);
+}
+```
+By explicitly using consistent units (either all percentages or all pixels), the calculation now behaves as intended. Note that the original code was actually correct, the reported issue stemmed from a misunderstanding of how calc() works with different units and operator precedence.
